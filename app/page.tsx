@@ -1,4 +1,5 @@
 import ArticleCard from "./components/ArticleCard";
+import ThemeToggle from "./components/ThemeToggle";
 import { client, isSanityConfigured } from "@/sanity/client";
 import { LATEST_ARTICLES_QUERY } from "@/sanity/queries";
 import type { Article } from "@/sanity/types";
@@ -14,10 +15,14 @@ export default async function Home() {
     <div className="min-h-screen bg-zinc-100 dark:bg-zinc-950">
       {/* Header */}
       <header className="sticky top-0 z-10 border-b border-zinc-200 bg-white/80 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-900/80">
-        <div className="mx-auto flex h-14 max-w-2xl items-center justify-center px-4">
-          <h1 className="text-lg font-bold tracking-tight text-zinc-950 dark:text-white">
-            Pagina Curta
-          </h1>
+        <div className="mx-auto flex h-14 max-w-2xl items-center px-4">
+          {/* Spacer — mirrors button width to keep logo centred */}
+          <div className="w-9 shrink-0" />
+          <div className="flex flex-1 justify-center">
+            <img src="/logo-light.svg" alt="Página Curta" className="block h-7 w-auto dark:hidden" />
+            <img src="/logo-dark.svg" alt="Página Curta" className="hidden h-7 w-auto dark:block" />
+          </div>
+          <ThemeToggle />
         </div>
       </header>
 
